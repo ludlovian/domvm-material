@@ -1,0 +1,49 @@
+{
+  "name": "domvm-material",
+  "version": "0.0.1",
+  "description": "Material components for domvm",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "clean": "rm coverage/ .nyc_output/ node_modules/.cache/ -rf",
+    "lint": "standard \"src/**/*.js\" \"test/**/*.js\"|snazzy",
+    "format": "prettier-standard \"src/**/*.js\" \"test/**/*.js\"",
+    "build:dev": "npm run lint && microbundle -f es,cjs --no-compress",
+    "build:prod": "npm run lint && microbundle -f es,cjs",
+    "test": "npm run clean && npm run lint && ava",
+    "test:cov": "npm run clean && npm run lint && nyc ava",
+    "coverage": "npm run test:cov && nyc report --reporter=html && http-server coverage/ -p 8000"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^1.2.1",
+    "domvm": "^3.4.7",
+    "esm": "^3.2.6",
+    "http-server": "^0.11.1",
+    "microbundle": "^0.10.1",
+    "nyc": "^13.3.0",
+    "prettier-standard": "^9.1.1",
+    "snazzy": "^8.0.0",
+    "standard": "^12.0.1"
+  },
+  "peerDependencies": {
+    "domvm": "^3.4.7"
+  },
+  "dependencies": {
+    "@material/drawer": "^0.44.1",
+    "@material/notched-outline": "^0.44.1",
+    "@material/ripple": "^0.44.1",
+    "@material/select": "^0.44.1",
+    "@material/tab-bar": "^0.44.1",
+    "@material/textfield": "^0.44.1",
+    "@material/top-app-bar": "^0.44.1",
+    "classnames": "^2.2.6"
+  },
+  "ava": {
+    "require": [
+      "esm",
+      "./test/helpers/setupEnv.js"
+    ]
+  }
+}
