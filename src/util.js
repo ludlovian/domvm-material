@@ -1,9 +1,11 @@
 'use strict'
 
 let _domvm
+let VNode
 
 export function use (domvm) {
   _domvm = domvm
+  VNode = _domvm.defineElement('div').constructor
 }
 
 export function el (...args) {
@@ -11,10 +13,7 @@ export function el (...args) {
 }
 
 const isPojo = o =>
-  o &&
-  typeof o === 'object' &&
-  !Array.isArray(o) &&
-  o.constructor.name !== 'VNode'
+  o && typeof o === 'object' && !Array.isArray(o) && !(o instanceof VNode)
 
 export function getArgs (args) {
   const attrs = isPojo(args[0]) ? args.shift() : {}
