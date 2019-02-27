@@ -1,6 +1,6 @@
 {
   "name": "domvm-material",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Material components for domvm",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
